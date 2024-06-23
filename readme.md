@@ -16,3 +16,5 @@
 
 - vite
 - react
+- react-router-dom
+- antd
