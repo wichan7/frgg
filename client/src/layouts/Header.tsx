@@ -1,6 +1,8 @@
-import { Layout, Menu } from 'antd'
+import { Layout } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
+import Typo, { typography } from '../components/typo/Typo'
+import Menu from './Menu/Menu'
 
 const { Header: AntdHeader } = Layout
 
@@ -9,29 +11,26 @@ const S = {
     position: sticky;
     top: 0;
     display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
   `,
-  Title: styled.span``,
-  Menu: styled(Menu)`
-    height: 64px;
+  Title: styled.div`
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
   `,
 }
 
 const Header = () => {
   const navigate = useNavigate()
-
   const goHome = () => navigate('/')
-  const goRank = () => navigate('/rank')
 
   return (
     <S.Header>
-      <S.Title>메이플스토리 관상 퀴즈</S.Title>
-      <S.Menu
-        mode="horizontal"
-        items={[
-          { key: '홈', label: '홈', onClick: goHome },
-          { key: '랭킹', label: '랭킹', onClick: goRank },
-        ]}
-      />
+      <S.Title onClick={goHome}>
+        <Typo {...typography.titleB}>메이플스토리 관상 퀴즈</Typo>
+      </S.Title>
+      <Menu />
     </S.Header>
   )
 }
